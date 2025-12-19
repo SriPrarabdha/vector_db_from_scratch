@@ -2,7 +2,8 @@
 
 > **A research-grade, production-inspired vector database implemented entirely from scratch in modern C++.**  
 > No Faiss. No Annoy. No shortcuts. Just fundamentals, performance, and clarity.
-
+<br>
+> Work under Progress !!!!
 ---
 
 ## ✨ Why This Project Exists
