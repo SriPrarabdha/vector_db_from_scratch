@@ -1,0 +1,1 @@
+add_executable(gen_synth generate_synthetic_dataset.cpp)

@@ -1,0 +1,2 @@
+add_executable(bench_linear bench_main.cpp)
+target_link_libraries(bench_linear vdb_indexes vdb_core)
