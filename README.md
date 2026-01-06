@@ -37,7 +37,7 @@ If it’s here, it’s because it was implemented — not imported.
 
 ---
 
-### 2. Measure everything
+<!-- ### 2. Measure everything
 All design decisions are **empirically validated**:
 - recall@k
 - latency (p50 / p95)
@@ -45,19 +45,19 @@ All design decisions are **empirically validated**:
 - nodes visited
 - pruning efficiency
 
-No claims without benchmarks.
+No claims without benchmarks. -->
 
 ---
 
-### 3. Correctness first, approximation second
+<!-- ### 3. Correctness first, approximation second
 Every approximate method is:
 1. Verified against **exact linear scan**
 2. Measured for **accuracy degradation**
 3. Tuned for **performance/recall tradeoffs**
 
----
+--- -->
 
-### 4. Research-grade ideas, production-style engineering
+### 2. Research-grade ideas, production-style engineering
 This project intentionally bridges:
 - **ANN research literature**
 - **real-world vector DB engineering**
@@ -66,7 +66,7 @@ Features like persistence, memory layout optimization, and Python bindings are t
 
 ---
 
-### 5. Readable, hackable, extensible
+<!-- ### 5. Readable, hackable, extensible
 The codebase is:
 - modular
 - well-documented
@@ -75,7 +75,7 @@ The codebase is:
 Contributors should be able to:
 > “Swap one idea and observe the impact.”
 
----
+--- -->
 
 ## 🚀 What This Project Implements
 
@@ -153,19 +153,6 @@ Dataset size : 100000 , Dimension  , Queries : 1  ,Top-K : 10
 | 32        | 5.59 ms            | 35.75 ms            | 100,000       |0                |
 | 128       | 17.11 ms           | 64.73 ms            | 100,000       |0                |
 | 1024      | 158.299 ms         | 188.459 ms          | 100,000       |0                |
-
-
----
-
-## 🗂️ Repository Structure
-
-core/ → vectors, distances, SIMD helpers
-indexes/ → linear scan, KD-tree, IVF, PQ, HNSW
-storage/ → persistence, mmap, serialization
-api/ → C++ API + Python bindings
-bench/ → datasets, metrics, benchmark runner
-demo/ → CLI demo
-tools/ → dataset generators
 
 
 ---
