@@ -47,7 +47,7 @@ All design decisions are **empirically validated**:
 
 No claims without benchmarks. -->
 
----
+<!-- --- -->
 
 <!-- ### 3. Correctness first, approximation second
 Every approximate method is:
