@@ -131,18 +131,29 @@ Implemented closely to the original paper — **without copying code**:
 
 ---
 
-## 📊 Benchmarks (Example)
+## 📊 Benchmarks 
 
-| Index        | Recall@10 | Latency (ms) | Memory (MB) |
-|-------------|-----------|--------------|-------------|
-| Linear Scan | 1.00      | 120.4        | 512         |
-| KD-Tree    | 1.00      | 35.2         | 540         |
-| IVF        | 0.91      | 4.8          | 180         |
-| IVF + PQ   | 0.86      | 2.1          | 64          |
-| HNSW       | 0.95      | 1.6          | 220         |
-| IVF+HNSW   | 0.94      | 0.9          | 140         |
+Linear Index Performance with Scalar and AVX2 Based Implementation
 
-> Full benchmark scripts and reproducibility instructions are provided.
+Dataset size : 100000 , Dimension : 1024 , Queries : 100  ,Top-K : 10
+
+| Implementation Type | Search Time | Queries Per Second (QPS) | Instructions per Cycle |
+|---------------------|-------------|---------------------------|-------------------------|
+| Scalar              | 7.792 sec   | 12.83                     | 0.97                    |
+| AVX2                | 2.339 sec   | 42.74                     | 1.04                    |
+
+Performance Comparison between KD Tree and Linear Scan Index
+
+Dataset size : 100000 , Dimension  , Queries : 1  ,Top-K : 10
+
+| Dimension | Linear Search Time | KD-Tree Search Time | Visited Nodes | Pruned Branches |
+|-----------|--------------------|---------------------|---------------|-----------------|
+| 4         | 2.15 ms            | 0.088 ms            | 376           |129              |
+| 8         | 2.74 ms            | 1.32 ms             | 8,982         |3432             |
+| 32        | 5.59 ms            | 35.75 ms            | 100,000       |0                |
+| 128       | 17.11 ms           | 64.73 ms            | 100,000       |0                |
+| 1024      | 158.299 ms         | 188.459 ms          | 100,000       |0                |
+
 
 ---
 
@@ -163,9 +174,7 @@ tools/ → dataset generators
 
 ```bash
 mkdir build && cd build
-cmake ..
-make -j
-./bench/bench
-./demo/cli_demo
+cmake --build . -j$(nproc)
+perf stat ./bench/bench_linear --type scalar --threads 1 --structure aos
 ```
 
